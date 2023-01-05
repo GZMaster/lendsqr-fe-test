@@ -7,7 +7,7 @@ import Loans from "../../assets/icons/box3.svg";
 import Savings from "../../assets/icons/box4.svg";
 import "../../styles/main.scss";
 import Navbar from "../../components/Navbar";
-import Sidebar from "../../components/Sidebar";
+import { Sidebar } from "../../components/Sidebar";
 const Info = [
   {
     id: 1,

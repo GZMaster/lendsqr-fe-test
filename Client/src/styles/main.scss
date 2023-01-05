@@ -103,7 +103,7 @@ a {
       }
 
       .title {
-        color: $loginTitle;
+        color: $Title;
         font-size: 2.5rem;
         font-weight: 700;
         line-height: 3.3rem;
@@ -114,7 +114,7 @@ a {
         }
       }
       .text {
-        color: $loginText;
+        color: $Text;
         font-weight: 400;
         line-height: 1.7rem;
         font-size: 1.25rem;
@@ -135,7 +135,7 @@ a {
           height: 3.125rem;
           padding-left: 1rem;
           font-family: Avenir Next, sans-serif;
-          outline: $LoginBlue;
+          outline: $Blue;
           &:placeholder {
             color: rgba(84, 95, 125, 0.15);
           }
@@ -148,10 +148,10 @@ a {
         margin-top: 1rem;
         letter-spacing: 0.1em;
         font-family: Avenir Next-Bold, sans-serif;
-        color: $LoginBlue;
+        color: $Blue;
       }
       .btn {
-        background-color: $LoginBlue;
+        background-color: $Blue;
         border-radius: 0.5rem;
         margin: 1rem 0;
         padding: 1rem 0;
@@ -169,17 +169,59 @@ a {
 }
 
 //Navbar
-.Navbar {
-  padding: 2rem 4rem;
-  display: flex;
-  justify-content: space-between;
 
-  .left {
-    display: flex;
-    gap: 2rem;
+//Sidebar
+.Sidebar {
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  height: 100vh;
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: $Blue;
+  }
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  .logoWrapper {
+    padding: 1.5rem;
+  }
+  .title {
+    font-family: Work Sans, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: $Title;
+    text-transform: uppercase;
+    padding-left: 1.5rem;
+  }
+  .links {
+    margin-bottom: 1rem;
+    .selected {
+      background-color: #39cdcc1a;
+      border-left: 4px solid $Blue;
+    }
+    .link {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      .name {
+        font-family: Work Sans, sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: $Text;
+      }
+    }
   }
 }
-//Sidebar
 
 //Dashboard
 .DashBoardContainer {
@@ -188,9 +230,87 @@ a {
     flex: 1;
   }
   .right {
-    flex: 4;
+    flex: 5;
+    .Navbar {
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+
+      .l {
+        display: flex;
+        .searchWrapper {
+          border: 1px solid #21407d45;
+          color: #111111e2;
+          display: flex;
+          align-items: center;
+          border-radius: 8px;
+          .search {
+            background-color: transparent;
+            color: #0f0f0fd8;
+            border: none;
+            outline: 0;
+            width: 375px;
+            padding: 0.8rem;
+            font-family: Work Sans, sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+            color: $Text;
+          }
+          .SearchIcon {
+            background-color: $Blue;
+            padding: 14px 21px;
+            border-radius: 0px 8px 8px 0px;
+            margin: 0;
+            display: flex;
+            width: 1005;
+            img {
+              align-self: center;
+            }
+          }
+        }
+      }
+      .r {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        .docs {
+          font-family: Work Sans, sans-serif;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 19px;
+          color: $Text;
+          text-decoration-line: underline;
+        }
+
+        .profile {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+          .profileImage {
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            background-size: cover;
+            cursor: pointer;
+            object-fit: cover;
+          }
+          .profileName {
+            font-family: Work Sans, sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color: $Title;
+          }
+        }
+      }
+    }
   }
 }
+
 .Dashboard {
   background-color: $DashBg;
   padding: 2rem;
@@ -199,7 +319,7 @@ a {
     font-family: Work Sans, sans-serif;
     font-size: 24px;
     line-height: 28px;
-    color: $loginTitle;
+    color: $Title;
     font-weight: 500;
   }
   .boxWrapper {
@@ -221,7 +341,7 @@ a {
         font-size: 14px;
         line-height: 16px;
         text-transform: uppercase;
-        color: $loginText;
+        color: $Text;
       }
       .count {
         font-family: Work Sans-Bold, sans-serif;
@@ -230,7 +350,7 @@ a {
         font-size: 24px;
         line-height: 28px;
         text-transform: uppercase;
-        color: $loginTitle;
+        color: $Title;
       }
     }
   }

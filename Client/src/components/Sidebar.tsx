@@ -127,65 +127,60 @@ const Business = [
     Icon: Chart,
   },
 ];
-const Sidebar = () => {
+
+export const Sidebar = () => {
   return (
     <aside className="Sidebar">
       <div className="logoWrapper">
         <img src={logo} alt="logo" className="logo" />
       </div>
-      <div className="top-links">
+      <div className="links">
         <div className="link">
-          <img src={BriefCase} alt="" /> Switch Organizations
+          <img src={BriefCase} alt="" />{" "}
+          <div className="name">Switch Organizations</div>
         </div>
-        <div className="link">
-          <img src={Home} alt="" /> Dashboard
+        <div className="link selected">
+          <img src={Home} alt="" />
+          <div className="name">Dashboard</div>
         </div>
       </div>
       <div className="title">Customers</div>
-      <ul>
+      <div className="links">
         {Customers.map((C) => {
           return (
-            <li key={C.id}>
+            <div key={C.id} className="link">
               <img src={C.Icon} alt="" />
               <div className="name">{C.PathName}</div>
-            </li>
+            </div>
           );
         })}
-      </ul>
+      </div>
       <div className="title">Businesses</div>
-      <ul>
+      <div className="links">
         {Business.map((B) => {
           return (
-            <li key={B.id}>
+            <div className="link" key={B.id}>
               <img src={B.Icon} alt="" />
               <div className="name">{B.PathName}</div>
-            </li>
+            </div>
           );
         })}
-      </ul>
+      </div>
       <div className="title">Settings</div>
-      <ul>
-        <li>
-          <div className="icon">
-            <img src={Slider} alt="" />
-          </div>
+      <div className="links">
+        <div className="link">
+          <img src={Slider} alt="" />
           <div className="name">Preferences</div>
-        </li>
-        <li>
-          <div className="icon">
-            <img src={Badge} alt="" />
-          </div>
+        </div>
+        <div className="link">
+          <img src={Badge} alt="" />
           <div className="name">Fees and Pricing</div>
-        </li>
-        <li>
-          <div className="icon">
-            <img src={ClipBoard} alt="" />
-          </div>
+        </div>
+        <div className="link">
+          <img src={ClipBoard} alt="" />
           <div className="name">Audit Logs</div>
-        </li>
-      </ul>
+        </div>
+      </div>
     </aside>
   );
 };
-
-export default Sidebar;
