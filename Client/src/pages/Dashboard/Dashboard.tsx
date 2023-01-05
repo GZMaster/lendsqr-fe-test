@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/main.scss";
+import Filter from "../../assets/icons/filter-results-button.svg";
 import axios from "axios";
 import Users from "../../assets/icons/box1.svg";
 import Active from "../../assets/icons/box2.svg";
 import Loans from "../../assets/icons/box3.svg";
 import Savings from "../../assets/icons/box4.svg";
-import "../../styles/main.scss";
 import Navbar from "../../components/Navbar";
 import { Sidebar } from "../../components/Sidebar";
 const Info = [
@@ -73,12 +73,42 @@ const Dashboard = () => {
             <table className="table table-striped">
               <thead>
                 <tr>
-                  <th>Invoce</th>
-                  <th>Customer</th>
-                  <th>Ship</th>
-                  <th>Price</th>
-                  <th>Pruchased Price</th>
-                  <th>Status</th>
+                  <th>
+                    <div className="flex">
+                      Organization
+                      <img src={Filter} alt="" />
+                    </div>
+                  </th>
+                  <th>
+                    <div className="flex">
+                      Username
+                      <img src={Filter} alt="" />
+                    </div>
+                  </th>
+                  <th>
+                    <div className="flex">
+                      Email
+                      <img src={Filter} alt="" />
+                    </div>
+                  </th>
+                  <th>
+                    <div className="flex">
+                      Phone Number
+                      <img src={Filter} alt="" />
+                    </div>
+                  </th>
+                  <th>
+                    <div className="flex">
+                      Date Joined
+                      <img src={Filter} alt="" />
+                    </div>
+                  </th>
+                  <th>
+                    <div className="flex">
+                      Status
+                      <img src={Filter} alt="" />
+                    </div>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -86,10 +116,10 @@ const Dashboard = () => {
                   return (
                     <tr key={user.id}>
                       <th scope="row">{user.orgName}</th>
-                      <td>{user.userName}</td>
+                      <td> {user.userName}</td>
                       <td>{user.email}</td>
                       <td>{user.phoneNumber}</td>
-                      <td>{user.accountNumber}</td>
+                      <td>{user.createdAt.slice(0, 10)}</td>
                       <td>
                         <a href="#" className="btn btn-success">
                           Progress
