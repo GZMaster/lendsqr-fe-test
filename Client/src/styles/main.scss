@@ -21,6 +21,16 @@ a {
   src: local("Avenir Next-Bold"),
     url(../assets/fonts/AvenirNextLTPro-Bold.otf) format("opentype");
 }
+@font-face {
+  font-family: "Work Sans";
+  src: local("Work Sans"),
+    url(../assets/fonts/WorkSans-Regular.ttf) format("ttf");
+}
+@font-face {
+  font-family: "Work Sans-Bold";
+  src: local("Work Sans-Bold"),
+    url(../assets/fonts/WorkSans-Bold.ttf) format("ttf");
+}
 
 //LOGIN
 .Login {
@@ -167,5 +177,94 @@ a {
   .left {
     display: flex;
     gap: 2rem;
+  }
+}
+//Sidebar
+
+//Dashboard
+.DashBoardContainer {
+  display: flex;
+  .left {
+    flex: 1;
+  }
+  .right {
+    flex: 4;
+  }
+}
+.Dashboard {
+  background-color: $DashBg;
+  padding: 2rem;
+
+  .title {
+    font-family: Work Sans, sans-serif;
+    font-size: 24px;
+    line-height: 28px;
+    color: $loginTitle;
+    font-weight: 500;
+  }
+  .boxWrapper {
+    display: flex;
+    justify-content: space-between;
+    .box {
+      background-color: $white;
+      padding: 1.5rem;
+      border: 1px solid rgba(33, 63, 125, 0.06);
+      box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      .name {
+        font-family: Work Sans, sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        text-transform: uppercase;
+        color: $loginText;
+      }
+      .count {
+        font-family: Work Sans-Bold, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 28px;
+        text-transform: uppercase;
+        color: $loginTitle;
+      }
+    }
+  }
+  .tableWrapper {
+    background: $white;
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    .table {
+      width: 100%;
+      thead {
+        th {
+          border: none;
+          padding: 30px;
+          font-size: 13px;
+          color: #000;
+          font-weight: 400;
+          text-transform: uppercase;
+        }
+      }
+      tbody {
+        th {
+          border: none;
+          padding: 20px 30px;
+          font-size: 14px;
+          text-align: start;
+        }
+        td {
+          border: none;
+          padding: 20px 30px;
+          font-size: 14px;
+          text-align: start;
+        }
+      }
+    }
   }
 }

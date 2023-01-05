@@ -1,7 +1,8 @@
 import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 const App = () => {
-  return <Login />;
+  return <Dashboard />;
 };
 
 export default App;
