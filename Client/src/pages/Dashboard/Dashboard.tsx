@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import "../../styles/main.scss";
 import Filter from "../../assets/icons/filter-results-button.svg";
+import Pagination from "../../components/Pagination/Pagination";
 import axios from "axios";
 import Users from "../../assets/icons/box1.svg";
 import Active from "../../assets/icons/box2.svg";
@@ -8,6 +9,7 @@ import Loans from "../../assets/icons/box3.svg";
 import Savings from "../../assets/icons/box4.svg";
 import { Link } from "react-router-dom";
 
+let PageSize: number = 10;
 const Info = [
   {
     id: 1,
@@ -49,6 +51,13 @@ const Dashboard = () => {
     };
     getUsers();
   }, []);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const userData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return users.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage]);
 
   return (
     <section className="Dashboard">
@@ -107,7 +116,7 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => {
+            {userData.map((user) => {
               return (
                 <tr key={user.id}>
                   <th scope="row">{user.orgName}</th>
@@ -118,8 +127,16 @@ const Dashboard = () => {
                   <td>{user.phoneNumber.slice(0, 13)}</td>
                   <td>{user.createdAt.slice(0, 10)}</td>
                   <td>
-                    <a href="#" className="btn btn-success">
-                      Progress
+                    <a
+                      href="#"
+                      style={{
+                        background: "#39cd638",
+                        padding: "0.7rem 1rem",
+                        borderRadius: "100px",
+                        color: "#39cd63",
+                      }}
+                    >
+                      Active
                     </a>
                   </td>
                 </tr>
@@ -127,6 +144,15 @@ const Dashboard = () => {
             })}
           </tbody>
         </table>
+        <Pagination
+          className="pagination-bar"
+          currentPage={currentPage}
+          totalCount={users.length}
+          pageSize={PageSize}
+          onPageChange={(page: React.SetStateAction<number>) =>
+            setCurrentPage(page)
+          }
+        />
       </div>
     </section>
   );
