@@ -1,6 +1,7 @@
 import "../styles/main.scss";
 import logo from "../assets/images/logo.svg";
 import LoginImg from "../assets/images/pablo-sign-in 1.png";
+import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <section className="Login">
@@ -19,7 +20,9 @@ const Login = () => {
           <a href="#" className="forget">
             FORGOT PASSWORD?
           </a>
-          <div className="btn">LOG IN</div>
+          <Link to="/" className="btn">
+            LOG IN
+          </Link>
         </div>
       </div>
     </section>

@@ -6,8 +6,8 @@ import Users from "../../assets/icons/box1.svg";
 import Active from "../../assets/icons/box2.svg";
 import Loans from "../../assets/icons/box3.svg";
 import Savings from "../../assets/icons/box4.svg";
-import Navbar from "../../components/Navbar";
-import { Sidebar } from "../../components/Sidebar";
+import { Link } from "react-router-dom";
+
 const Info = [
   {
     id: 1,
@@ -50,90 +50,84 @@ const Dashboard = () => {
     getUsers();
   }, []);
   return (
-    <div className="DashBoardContainer">
-      <div className="left">
-        <Sidebar />
+    <section className="Dashboard">
+      <div className="title">Users</div>
+      <div className="boxWrapper">
+        {Info.map((M) => {
+          return (
+            <div className="box" key={M.id}>
+              <img src={M.icon} alt="" />
+              <div className="name">{M.name}</div>
+              <div className="count">{M.count}</div>
+            </div>
+          );
+        })}
       </div>
-      <div className="right">
-        <Navbar />
-        <section className="Dashboard">
-          <div className="title">Users</div>
-          <div className="boxWrapper">
-            {Info.map((M) => {
-              return (
-                <div className="box" key={M.id}>
-                  <img src={M.icon} alt="" />
-                  <div className="name">{M.name}</div>
-                  <div className="count">{M.count}</div>
+      <div className="tableWrapper">
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>
+                <div className="flex">
+                  Organization
+                  <img src={Filter} alt="" />
                 </div>
+              </th>
+              <th>
+                <div className="flex">
+                  Username
+                  <img src={Filter} alt="" />
+                </div>
+              </th>
+              <th>
+                <div className="flex">
+                  Email
+                  <img src={Filter} alt="" />
+                </div>
+              </th>
+              <th>
+                <div className="flex">
+                  Phone Number
+                  <img src={Filter} alt="" />
+                </div>
+              </th>
+              <th>
+                <div className="flex">
+                  Date Joined
+                  <img src={Filter} alt="" />
+                </div>
+              </th>
+              <th>
+                <div className="flex">
+                  Status
+                  <img src={Filter} alt="" />
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user) => {
+              return (
+                <tr key={user.id}>
+                  <th scope="row">{user.orgName}</th>
+                  <td>
+                    <Link to="/user/:id">{user.userName}</Link>{" "}
+                  </td>
+                  <td>{user.email}</td>
+                  <td>{user.phoneNumber}</td>
+                  <td>{user.createdAt.slice(0, 10)}</td>
+                  <td>
+                    <a href="#" className="btn btn-success">
+                      Progress
+                    </a>
+                  </td>
+                </tr>
               );
             })}
-          </div>
-          <div className="tableWrapper">
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th>
-                    <div className="flex">
-                      Organization
-                      <img src={Filter} alt="" />
-                    </div>
-                  </th>
-                  <th>
-                    <div className="flex">
-                      Username
-                      <img src={Filter} alt="" />
-                    </div>
-                  </th>
-                  <th>
-                    <div className="flex">
-                      Email
-                      <img src={Filter} alt="" />
-                    </div>
-                  </th>
-                  <th>
-                    <div className="flex">
-                      Phone Number
-                      <img src={Filter} alt="" />
-                    </div>
-                  </th>
-                  <th>
-                    <div className="flex">
-                      Date Joined
-                      <img src={Filter} alt="" />
-                    </div>
-                  </th>
-                  <th>
-                    <div className="flex">
-                      Status
-                      <img src={Filter} alt="" />
-                    </div>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map((user) => {
-                  return (
-                    <tr key={user.id}>
-                      <th scope="row">{user.orgName}</th>
-                      <td> {user.userName}</td>
-                      <td>{user.email}</td>
-                      <td>{user.phoneNumber}</td>
-                      <td>{user.createdAt.slice(0, 10)}</td>
-                      <td>
-                        <a href="#" className="btn btn-success">
-                          Progress
-                        </a>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </section>
+          </tbody>
+        </table>
       </div>
-    </div>
+    </section>
   );
 };
 

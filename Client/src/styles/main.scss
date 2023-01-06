@@ -8,6 +8,7 @@
 }
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 //FONTS
@@ -196,9 +197,13 @@ a {
     color: $Title;
     text-transform: uppercase;
     padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
   }
   .links {
     margin-bottom: 1rem;
+    :hover {
+      background-color: #39cdcc1a;
+    }
     .selected {
       background-color: #39cdcc1a;
       border-left: 4px solid $Blue;
@@ -209,6 +214,7 @@ a {
       align-items: center;
       padding: 1.25rem 1.5rem;
       cursor: pointer;
+
       .name {
         font-family: Work Sans, sans-serif;
         font-style: normal;

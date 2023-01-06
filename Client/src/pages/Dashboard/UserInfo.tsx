@@ -4,9 +4,10 @@ import { useParams } from "react-router-dom";
 
 const UserInfo = () => {
   const { id } = useParams();
+  console.log(id);
   const [user, setUser] = useState<any[]>([]);
   useEffect(() => {
-    let url: string = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users:${id}`;
+    let url: string = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${id}`;
     const getUser = async () => {
       try {
         let res = await axios.get(url);
@@ -15,6 +16,7 @@ const UserInfo = () => {
         console.log(error);
       }
     };
+    getUser();
   }, []);
   return <div>UserInfo</div>;
 };
