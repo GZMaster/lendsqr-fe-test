@@ -49,6 +49,7 @@ const Dashboard = () => {
     };
     getUsers();
   }, []);
+
   return (
     <section className="Dashboard">
       <div className="title">Users</div>
@@ -111,10 +112,10 @@ const Dashboard = () => {
                 <tr key={user.id}>
                   <th scope="row">{user.orgName}</th>
                   <td>
-                    <Link to="/user/:id">{user.userName}</Link>{" "}
+                    <Link to={`/user/${user.id}`}>{user.userName}</Link>{" "}
                   </td>
                   <td>{user.email}</td>
-                  <td>{user.phoneNumber}</td>
+                  <td>{user.phoneNumber.slice(0, 13)}</td>
                   <td>{user.createdAt.slice(0, 10)}</td>
                   <td>
                     <a href="#" className="btn btn-success">
