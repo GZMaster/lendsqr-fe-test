@@ -51,13 +51,17 @@ const Dashboard = () => {
     };
     getUsers();
   }, []);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(2);
 
   const userData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return users.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
+  if (userData.length < 1) {
+  } else {
+    console.log("finally");
+  }
 
   return (
     <section className="Dashboard">

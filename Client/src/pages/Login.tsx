@@ -2,7 +2,15 @@ import "../styles/main.scss";
 import logo from "../assets/images/logo.svg";
 import LoginImg from "../assets/images/pablo-sign-in 1.png";
 import { Link } from "react-router-dom";
-const Login = () => {
+import { Dispatch, SetStateAction } from "react";
+interface IProps {
+  loggedIn: boolean;
+  setLoggedIn: Dispatch<SetStateAction<boolean>>;
+}
+const Login: React.FC<IProps> = ({ loggedIn, setLoggedIn }: IProps) => {
+  const log = () => {
+    setLoggedIn(!loggedIn);
+  };
   return (
     <section className="Login">
       <div className="Container">
@@ -20,7 +28,7 @@ const Login = () => {
           <a href="#" className="forget">
             FORGOT PASSWORD?
           </a>
-          <Link to="/" className="btn">
+          <Link to="/" className="btn" onClick={log}>
             LOG IN
           </Link>
         </div>
