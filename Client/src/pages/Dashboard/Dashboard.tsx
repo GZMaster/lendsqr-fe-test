@@ -51,7 +51,7 @@ const Dashboard = () => {
     };
     getUsers();
   }, []);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(2);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -63,6 +63,10 @@ const Dashboard = () => {
     console.table(users);
     return users.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
+  if (userData.length < 1) {
+  } else {
+    console.log("finally");
+  }
 
   return (
     <section className="Dashboard">

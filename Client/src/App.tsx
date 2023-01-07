@@ -10,52 +10,54 @@ import {
 import Navbar from "./components/Navbar";
 import "./styles/main.scss";
 import { Sidebar } from "./components/Sidebar";
-let adminUser = true;
+import { useState } from "react";
 
-const Layout = () => {
-  return (
-    <div className="DashBoardContainer">
-      <div className="left">
-        <Sidebar />
-      </div>
-      <div className="right">
-        <Navbar />
-        <Outlet />
-      </div>
-    </div>
-  );
-};
-const ProtectedRoute = ({ children }: any) => {
-  if (!adminUser) {
-    return <Navigate to="/login" />;
-  }
-  return children;
-};
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <ProtectedRoute>
-        <Layout />,
-      </ProtectedRoute>
-    ),
-    children: [
-      {
-        path: "/",
-        element: <Dashboard />,
-      },
-      {
-        path: "/user/:id",
-        element: <UserInfo />,
-      },
-    ],
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-]);
 const App = () => {
+  let [loggedIn, setLoggedIn] = useState(false);
+
+  const ProtectedRoute = ({ children }: any) => {
+    if (!loggedIn) {
+      return <Navigate to="/login" />;
+    }
+    return children;
+  };
+  const Layout = () => {
+    return (
+      <div className="DashBoardContainer">
+        <div className="left">
+          <Sidebar />
+        </div>
+        <div className="right">
+          <Navbar />
+          <Outlet />
+        </div>
+      </div>
+    );
+  };
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <ProtectedRoute>
+          <Layout />,
+        </ProtectedRoute>
+      ),
+      children: [
+        {
+          path: "/",
+          element: <Dashboard />,
+        },
+        {
+          path: "/user/:id",
+          element: <UserInfo />,
+        },
+      ],
+    },
+    {
+      path: "/login",
+      element: <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />,
+    },
+  ]);
   return <RouterProvider router={router} />;
 };
 
