@@ -41,10 +41,14 @@ const Dashboard = () => {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const res = await axios.get(
-          "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users"
-        );
-        setUsers(res.data);
+        await axios
+          .get(
+            "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users"
+          )
+          .then((res) => {
+            setCurrentPage(1);
+            setUsers(res.data);
+          });
       } catch (error) {
         console.log(error);
       }
@@ -56,12 +60,9 @@ const Dashboard = () => {
   const userData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
+    console.table(users);
     return users.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
-  if (userData.length < 1) {
-  } else {
-    console.log("finally");
-  }
 
   return (
     <section className="Dashboard">
