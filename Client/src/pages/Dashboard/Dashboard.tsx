@@ -53,9 +53,14 @@ const Dashboard = () => {
   }, []);
   const [currentPage, setCurrentPage] = useState(1);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, []);
+
   const userData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
+    console.table(users);
     return users.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
 
