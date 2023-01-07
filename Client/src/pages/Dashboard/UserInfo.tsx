@@ -20,8 +20,7 @@ const UserInfo = () => {
       firstName: "Darian",
       lastName: "Rolfson",
       phoneNumber: "494-278-0946",
-      avatar:
-        "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/725.jpg",
+      avatar: Avatar,
       gender: "Male",
       bvn: "815809412",
       address: "Gusikowski Locks",
@@ -64,7 +63,6 @@ const UserInfo = () => {
     };
     getUser();
   }, [id]);
-  console.log(user);
   return (
     <section className="User">
       <Link to="/" className="backLink">
