@@ -38,6 +38,7 @@ const Info = [
 ];
 const Dashboard = () => {
   const [users, setUsers] = useState<any[]>([]);
+  const [currentPage, setCurrentPage] = useState(2);
   useEffect(() => {
     const getUsers = async () => {
       try {
@@ -55,12 +56,10 @@ const Dashboard = () => {
     };
     getUsers();
   }, []);
-  const [currentPage, setCurrentPage] = useState(2);
 
   const userData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    console.table(users);
     return users.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
 
