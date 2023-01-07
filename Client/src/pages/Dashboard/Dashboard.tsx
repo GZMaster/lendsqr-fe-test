@@ -15,25 +15,25 @@ const Info = [
     id: 1,
     icon: Users,
     name: "Users",
-    count: 2453,
+    count: "2,453",
   },
   {
     id: 2,
     icon: Active,
     name: "Active Users",
-    count: 2453,
+    count: "2,453",
   },
   {
     id: 3,
     icon: Loans,
     name: "Users with loans",
-    count: 12453,
+    count: "12,453",
   },
   {
     id: 4,
     icon: Savings,
     name: "Users with savings",
-    count: 102453,
+    count: "102,453",
   },
 ];
 const Dashboard = () => {
